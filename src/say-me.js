@@ -17,6 +17,18 @@
         res += ' -g';
       }
       return res;
+    },
+
+    objToArr: function(obj) {
+      var arr = [];
+      for (var i in obj) {
+        if (obj.hasOwnProperty(i)) {
+          var newObj = obj[i];
+          newObj.name = i;
+          arr.push(newObj);
+        }
+      }
+      return arr;
     }
   };
 

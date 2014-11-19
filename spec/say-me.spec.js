@@ -23,4 +23,15 @@ describe('say-me', function() {
     var command = sayMe.buildCommand();
     expect(command).toEqual(expected);
   });
+
+  it('should objToArr', function() {
+    var obj = {
+      test: 'test',
+      value: 'value'
+    };
+
+    var arr = sayMe.objToArr(obj);
+    console.log(arr);
+    expect(arr.length).toEqual(2);
+  });
 });
