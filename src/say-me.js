@@ -9,7 +9,8 @@
 
   SayMe.prototype = {
     init: function() {
-      this.command = 'npm ls --depth=0 --json';
+      this.defaultCommand = 'npm ls --depth=0 --json';
+      this.command = '';
       this.isGlobal = false;
       this.programs = {};
     },
@@ -33,11 +34,10 @@
     },
 
     buildCommand: function() {
-      var res = this.command;
+      this.command = this.defaultCommand;
       if (this.isGlobal) {
-        res += ' -g';
+        this.command += ' -g';
       }
-      return res;
     },
 
     objToArr: function(obj) {

@@ -6,7 +6,8 @@ describe('say-me', function() {
 
   it('should create member when creating', function() {
     var expected = 'npm ls --depth=0 --json';
-    expect(sayMe.command).toEqual(expected);
+    expect(sayMe.defaultCommand).toEqual(expected);
+    expect(sayMe.command).toEqual('');
     expect(sayMe.isGlobal).toBeFalsy();
     expect(sayMe.programs).toEqual({});
   });
@@ -14,16 +15,17 @@ describe('say-me', function() {
   it('should build command', function() {
     var expected = 'npm ls --depth=0 --json';
 
-    var command = sayMe.buildCommand();
-    expect(command).toEqual(expected);
+    sayMe.buildCommand();
+
+    expect(sayMe.command).toEqual(expected);
   });
 
   it('should build command with global flag', function() {
     var expected = 'npm ls --depth=0 --json -g';
     sayMe.isGlobal = true;
 
-    var command = sayMe.buildCommand();
-    expect(command).toEqual(expected);
+    sayMe.buildCommand();
+    expect(sayMe.command).toEqual(expected);
   });
 
   it('should objToArr', function() {
