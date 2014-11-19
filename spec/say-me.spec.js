@@ -2,7 +2,11 @@
 var SayMe = require('../src/say-me');
 
 describe('say-me', function() {
-  var sayMe = new SayMe();
+  var sayMe;
+
+  beforeEach(function() {
+    sayMe = new SayMe();
+  });
 
   it('should create member when creating', function() {
     var expected = 'npm ls --depth=0 --json';
@@ -10,6 +14,7 @@ describe('say-me', function() {
     expect(sayMe.command).toEqual('');
     expect(sayMe.isGlobal).toBeFalsy();
     expect(sayMe.programs).toEqual({});
+    expect(sayMe.sh).toBeDefined();
   });
 
   it('should build command', function() {
@@ -118,4 +123,55 @@ describe('say-me', function() {
     expect(sayMe.buildCommand).toHaveBeenCalled();
     expect(sayMe.processingNpmModules).toHaveBeenCalled();
   });
+
+  it('should processingNpmModules', function() {
+    var mockObj = {
+      test: false,
+      'say-me': true
+    };
+    sayMe.checkNpmModules = function(npmModuleArr) {
+      return mockObj;
+    };
+    sayMe.objToArr = function(npmModuleArr) {
+      return [];
+    };
+    var mockStdout = {
+      code: 0,
+      output: getmockStdout()
+    };
+    sayMe.sh.exec = function() {
+      return mockStdout;
+    };
+    spyOn(sayMe, 'checkNpmModules').and.callThrough();
+    spyOn(sayMe.sh, 'exec').and.callThrough();
+    spyOn(sayMe, 'objToArr').and.callThrough();
+
+    var obj = sayMe.processingNpmModules();
+
+    expect(obj.length).toEqual(mockObj.length);
+    expect(sayMe.checkNpmModules).toHaveBeenCalled();
+    expect(sayMe.objToArr).toHaveBeenCalled();
+    expect(sayMe.sh.exec).toHaveBeenCalled();
+  });
+
+  it('should processingNpmModules with error', function() {
+    sayMe.sh.exec = function() {
+      var mockStdout = {
+        code: 1
+      };
+      return mockStdout;
+    };
+    spyOn(sayMe.sh, 'exec').and.callThrough();
+
+    var obj = sayMe.processingNpmModules();
+
+    expect(obj).toEqual({});
+    expect(sayMe.sh.exec).toHaveBeenCalled();
+  });
 });
+
+
+function getmockStdout() {
+  var str = '{"dependencies":{"npm":{"version":"2.1.6","from":"npm@","resolved":"https://registry.npmjs.org/npm/-/npm-2.1.6.tgz"}}}';
+  return str;
+}

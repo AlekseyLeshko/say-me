@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var process = require('child_process');
+  var sh = require('shelljs');
 
   var SayMe = function() {
     this.init();
@@ -13,6 +13,7 @@
       this.command = '';
       this.isGlobal = false;
       this.programs = {};
+      this.sh = sh;
     },
 
     check: function(programs) {
@@ -28,16 +29,16 @@
     },
 
     processingNpmModules: function() {
-      var self = this;
-      var res;
-      process.exec(this.command, function(err, stdout, stderr) {
-        var npmObj = JSON.parse(stdout);
-        var npmModuleArr = self.objToArr(npmObj.dependencies);
-        var data = self.checkNpmModules(npmModuleArr);
-        res = data;
-        console.log(data);
-      });
-      return res;
+      var stdout = this.sh.exec(this.command);
+      if (stdout.code !== 0) {
+        console.log('Error');
+        return {};
+      }
+
+      var npmObj = JSON.parse(stdout.output);
+      var npmModuleArr = this.objToArr(npmObj.dependencies);
+      var data = this.checkNpmModules(npmModuleArr);
+      return data;
     },
 
     checkNpmModules: function(installedModules) {
