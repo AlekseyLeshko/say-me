@@ -77,10 +77,10 @@ describe('say-me', function() {
     sayMe.programs = obj;
 
     var res = sayMe.checkNpmModules(arr);
-    expect(res.npm.npm).toBeTruthy();
-    expect(res.npm['say-me']).toBeTruthy();
-    expect(res.npm.gulp).toBeTruthy();
-    expect(res.npm['test-module']).toBeFalsy();
+    expect(res.npm).toBeTruthy();
+    expect(res['say-me']).toBeTruthy();
+    expect(res.gulp).toBeTruthy();
+    expect(res['test-module']).toBeFalsy();
   });
 
   it('should check', function() {

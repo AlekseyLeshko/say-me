@@ -39,10 +39,7 @@
         }
         obj[this.programs.npm[i]] = val;
       }
-      var res = {
-        npm: obj
-      };
-      return res;
+      return obj;
     },
 
     buildCommand: function() {
