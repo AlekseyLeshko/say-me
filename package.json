@@ -1,0 +1,31 @@
+{
+  "name": "say-me",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "homepage": "https://github.com/AlekseyLeshko/say-me",
+  "author": "Aleksey Leshko (https://github.com/AlekseyLeshko)",
+  "contributors": [
+    "Aleksey Leshko <alekseyleshko@gmail.com>"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlekseyLeshko/say-me.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlekseyLeshko/say-me/issues"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "preferGlobal": "true",
+  "directories": {
+    "bin": ""
+  },
+  "devDependencies": {}
+}
