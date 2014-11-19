@@ -15,7 +15,19 @@
       this.programs = {};
     },
 
-    processingNpmModules: function(installedModules) {
+    check: function(programs) {
+      this.programs = programs;
+      this.buildCommand();
+
+      if (this.programs.npm) {
+        this.processingNpmModules();
+      }
+    },
+
+    processingNpmModules: function() {
+    },
+
+    checkNpmModules: function(installedModules) {
       var obj = {};
       for (var i = 0; i < this.programs.npm.length; i++) {
         var val = false;
