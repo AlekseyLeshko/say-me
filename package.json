@@ -20,7 +20,8 @@
     "url": "https://github.com/AlekseyLeshko/say-me/issues"
   },
   "dependencies": {
-    "jasmine": "^2.1.0"
+    "jasmine": "^2.1.0",
+    "shelljs": "^0.3.0"
   },
   "engines": {
     "node": "*"
