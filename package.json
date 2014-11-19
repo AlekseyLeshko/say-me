@@ -2,7 +2,7 @@
   "name": "say-me",
   "version": "0.0.0",
   "description": "",
-  "main": "",
+  "main": "./src/say-me.js",
   "homepage": "https://github.com/AlekseyLeshko/say-me",
   "author": "Aleksey Leshko (https://github.com/AlekseyLeshko)",
   "contributors": [
