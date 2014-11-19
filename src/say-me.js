@@ -19,16 +19,29 @@
       this.programs = programs;
       this.buildCommand();
 
+      var data = {};
       if (this.programs.npm) {
-        this.processingNpmModules();
+        data.npm = this.processingNpmModules();
       }
+
+      return data;
     },
 
     processingNpmModules: function() {
+      var self = this;
+      var res;
+      process.exec(this.command, function(err, stdout, stderr) {
+        var npmObj = JSON.parse(stdout);
+        var npmModuleArr = self.objToArr(npmObj.dependencies);
+        var data = self.checkNpmModules(npmModuleArr);
+        res = data;
+        console.log(data);
+      });
+      return res;
     },
 
     checkNpmModules: function(installedModules) {
-      var obj = {};
+      var data = {};
       for (var i = 0; i < this.programs.npm.length; i++) {
         var val = false;
         for (var j = 0; j < installedModules.length; j++) {
@@ -37,9 +50,9 @@
             break;
           }
         }
-        obj[this.programs.npm[i]] = val;
+        data[this.programs.npm[i]] = val;
       }
-      return obj;
+      return data;
     },
 
     buildCommand: function() {
