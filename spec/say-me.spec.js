@@ -7,6 +7,8 @@ describe('say-me', function() {
   it('should create member when creating', function() {
     var expected = 'npm ls --depth=0 --json';
     expect(sayMe.command).toEqual(expected);
+    expect(sayMe.isGlobal).toBeFalsy();
+    expect(sayMe.programs).toEqual({});
   });
 
   it('should build command', function() {
@@ -31,7 +33,6 @@ describe('say-me', function() {
     };
 
     var arr = sayMe.objToArr(obj);
-    console.log(arr);
     expect(arr.length).toEqual(2);
   });
 });

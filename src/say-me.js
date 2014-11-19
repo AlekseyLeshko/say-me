@@ -9,6 +9,7 @@
     init: function() {
       this.command = 'npm ls --depth=0 --json';
       this.isGlobal = false;
+      this.programs = {};
     },
 
     buildCommand: function() {
