@@ -19,7 +19,9 @@
   "bugs": {
     "url": "https://github.com/AlekseyLeshko/say-me/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jasmine": "^2.1.0"
+  },
   "engines": {
     "node": "*"
   },
