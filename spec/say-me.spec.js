@@ -171,16 +171,7 @@ describe('say-me', function() {
   });
 
 
-  it('should convertToProgramList', function() {
-    var strList = [
-      'node',
-      'npm'
-    ];
-    sayMe.convertToProgramList(strList);
 
-    expect(sayMe.programList.length).toEqual(strList.length);
-    expect(sayMe.programList[0].name).toEqual(strList[0]);
-  });
 
   it('should cleanProgramList', function() {
     sayMe.programList = [1, 2, 3];
@@ -191,28 +182,41 @@ describe('say-me', function() {
     expect(sayMe.programList.length).toEqual(0);
   });
 
-  it('should checkPrograms', function() {
-    var notInstalledProgram = 'test-module';
-    sayMe.sh.which = function(value) {
-      return value !== notInstalledProgram ? '/path/' : null;
-    };
-    spyOn(sayMe.sh, 'which').and.callThrough();
+  describe('with processing strList', function() {
+    var strList;
 
+    beforeEach(function() {
+      strList = [
+        'node',
+        'npm'
+      ];
+    });
 
-    var strList = [
-      'node',
-      'npm'
-    ];
-    strList.push(notInstalledProgram);
-    sayMe.convertToProgramList(strList);
+    it('should convertToProgramList', function() {
+      sayMe.convertToProgramList(strList);
 
-    sayMe.checkPrograms();
+      expect(sayMe.programList.length).toEqual(strList.length);
+      expect(sayMe.programList[0].name).toEqual(strList[0]);
+    });
 
-    expect(sayMe.sh.which).toHaveBeenCalled();
-    expect(sayMe.programList.length).toEqual(strList.length);
-    expect(sayMe.programList[0].isInstall).toBeTruthy();
-    expect(sayMe.programList[1].isInstall).toBeTruthy();
-    expect(sayMe.programList[2].isInstall).toBeFalsy();
+    it('should checkPrograms', function() {
+      var notInstalledProgram = 'test-module';
+      sayMe.sh.which = function(value) {
+        return value !== notInstalledProgram ? '/path/' : null;
+      };
+      spyOn(sayMe.sh, 'which').and.callThrough();
+
+      strList.push(notInstalledProgram);
+      sayMe.convertToProgramList(strList);
+
+      sayMe.checkPrograms();
+
+      expect(sayMe.sh.which).toHaveBeenCalled();
+      expect(sayMe.programList.length).toEqual(strList.length);
+      expect(sayMe.programList[0].isInstall).toBeTruthy();
+      expect(sayMe.programList[1].isInstall).toBeTruthy();
+      expect(sayMe.programList[2].isInstall).toBeFalsy();
+    });
   });
 });
 
