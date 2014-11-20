@@ -18,11 +18,7 @@
     },
 
     programIsInstalled: function(name) {
-      this.cleanProgramList();
-
-      this.convertToProgramList([name]);
-      this.checkPrograms();
-
+      this.programsIsInstalled([name]);
       return this.programList[0];
     },
 
