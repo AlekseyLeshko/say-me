@@ -14,6 +14,17 @@
       this.isGlobal = false;
       this.programs = {};
       this.sh = sh;
+      this.programList = [];
+    },
+
+    convertToProgramList: function(strList) {
+      for (var i = 0; i < strList.length; i++) {
+        var name = strList[i];
+        var program = {
+          name: name
+        };
+        this.programList.push(program);
+      };
     },
 
     check: function(programs) {

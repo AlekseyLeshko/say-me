@@ -15,6 +15,7 @@ describe('say-me', function() {
     expect(sayMe.isGlobal).toBeFalsy();
     expect(sayMe.programs).toEqual({});
     expect(sayMe.sh).toBeDefined();
+    expect(sayMe.programList.length).toEqual(0);
   });
 
   it('should build command', function() {
@@ -167,6 +168,18 @@ describe('say-me', function() {
 
     expect(obj).toEqual({});
     expect(sayMe.sh.exec).toHaveBeenCalled();
+  });
+
+
+  it('should convertToProgramList', function() {
+    var strList = [
+      'node',
+      'npm'
+    ];
+    sayMe.convertToProgramList(strList);
+
+    expect(sayMe.programList.length).toEqual(strList.length);
+    expect(sayMe.programList[0].name).toEqual(strList[0]);
   });
 });
 
