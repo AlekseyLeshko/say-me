@@ -190,8 +190,31 @@ describe('say-me', function() {
 
     expect(sayMe.programList.length).toEqual(0);
   });
-});
 
+  it('should checkPrograms', function() {
+    var notInstalledProgram = 'test-module';
+    sayMe.sh.which = function(value) {
+      return value !== notInstalledProgram ? '/path/' : null;
+    };
+    spyOn(sayMe.sh, 'which').and.callThrough();
+
+
+    var strList = [
+      'node',
+      'npm'
+    ];
+    strList.push(notInstalledProgram);
+    sayMe.convertToProgramList(strList);
+
+    sayMe.checkPrograms();
+
+    expect(sayMe.sh.which).toHaveBeenCalled();
+    expect(sayMe.programList.length).toEqual(strList.length);
+    expect(sayMe.programList[0].isInstall).toBeTruthy();
+    expect(sayMe.programList[1].isInstall).toBeTruthy();
+    expect(sayMe.programList[2].isInstall).toBeFalsy();
+  });
+});
 
 function getmockStdout() {
   var str = '{"dependencies":{"npm":{"version":"2.1.6","from":"npm@","resolved":"https://registry.npmjs.org/npm/-/npm-2.1.6.tgz"}}}';

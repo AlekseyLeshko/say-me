@@ -27,6 +27,14 @@
       };
     },
 
+    checkPrograms: function() {
+      for (var i = 0; i < this.programList.length; i++) {
+        var program = this.programList[i];
+        var path = this.sh.which(program.name);
+        program.isInstall = path ? true : false;
+      }
+    },
+
     check: function(programs) {
       this.programs = programs;
       this.buildCommand();
