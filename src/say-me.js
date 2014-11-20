@@ -26,6 +26,15 @@
       return this.programList[0];
     },
 
+    programsIsInstalled: function(arr) {
+      this.cleanProgramList();
+
+      this.convertToProgramList(arr);
+      this.checkPrograms();
+
+      return this.programList;
+    },
+
     convertToProgramList: function(strList) {
       for (var i = 0; i < strList.length; i++) {
         var name = strList[i];

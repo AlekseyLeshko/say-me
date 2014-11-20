@@ -237,6 +237,33 @@ describe('say-me', function() {
     expect(sayMe.convertToProgramList).toHaveBeenCalled();
     expect(sayMe.checkPrograms).toHaveBeenCalled();
   });
+
+  it('should programIsInstalled return isInstall = true', function() {
+    sayMe.checkPrograms = function() {
+      this.programList[0].isInstall = true;
+      this.programList[1].isInstall = true;
+      this.programList[2].isInstall = false;
+    };
+    spyOn(sayMe, 'cleanProgramList').and.callThrough();
+    spyOn(sayMe, 'convertToProgramList').and.callThrough();
+    spyOn(sayMe, 'checkPrograms').and.callThrough();
+
+    var strList = [
+      'node',
+      'npm',
+      'test-module'
+    ]
+
+    var arr = sayMe.programsIsInstalled(strList);
+
+    expect(sayMe.cleanProgramList).toHaveBeenCalled();
+    expect(sayMe.convertToProgramList).toHaveBeenCalled();
+    expect(sayMe.checkPrograms).toHaveBeenCalled();
+    expect(arr.length).toEqual(strList.length);
+    expect(arr[0].isInstall).toBeTruthy();
+    expect(arr[1].isInstall).toBeTruthy();
+    expect(arr[2].isInstall).toBeFalsy();
+  });
 });
 
 function getmockStdout() {
