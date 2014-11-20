@@ -17,6 +17,15 @@
       this.programList = [];
     },
 
+    programIsInstalled: function(name) {
+      this.cleanProgramList();
+
+      this.convertToProgramList([name]);
+      this.checkPrograms();
+
+      return this.programList[0];
+    },
+
     convertToProgramList: function(strList) {
       for (var i = 0; i < strList.length; i++) {
         var name = strList[i];

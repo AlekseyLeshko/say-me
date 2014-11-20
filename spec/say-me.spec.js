@@ -218,6 +218,25 @@ describe('say-me', function() {
       expect(sayMe.programList[2].isInstall).toBeFalsy();
     });
   });
+
+  it('should programIsInstalled return isInstall = true', function() {
+    sayMe.checkPrograms = function() {
+      this.programList[0].isInstall = true;
+    };
+    spyOn(sayMe, 'cleanProgramList').and.callThrough();
+    spyOn(sayMe, 'convertToProgramList').and.callThrough();
+    spyOn(sayMe, 'checkPrograms').and.callThrough();
+
+    var programName = 'node';
+
+    var obj = sayMe.programIsInstalled(programName);
+
+    expect(obj.name).toEqual(programName);
+    expect(obj.isInstall).toBeTruthy();
+    expect(sayMe.cleanProgramList).toHaveBeenCalled();
+    expect(sayMe.convertToProgramList).toHaveBeenCalled();
+    expect(sayMe.checkPrograms).toHaveBeenCalled();
+  });
 });
 
 function getmockStdout() {
