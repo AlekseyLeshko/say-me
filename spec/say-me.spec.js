@@ -181,6 +181,15 @@ describe('say-me', function() {
     expect(sayMe.programList.length).toEqual(strList.length);
     expect(sayMe.programList[0].name).toEqual(strList[0]);
   });
+
+  it('should cleanProgramList', function() {
+    sayMe.programList = [1, 2, 3];
+    expect(sayMe.programList.length).toEqual(3);
+
+    var obj = sayMe.cleanProgramList();
+
+    expect(sayMe.programList.length).toEqual(0);
+  });
 });
 
 

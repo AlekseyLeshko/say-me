@@ -67,6 +67,10 @@
       return data;
     },
 
+    cleanProgramList: function() {
+      this.programList = [];
+    },
+
     buildCommand: function() {
       this.command = this.defaultCommand;
       if (this.isGlobal) {
