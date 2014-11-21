@@ -15,7 +15,7 @@
       'programIsInstalled': {
         description: 'Say installed this program or not',
         short: 'pii'
-      },
+      }
     })
     .alias('p', 'program')
     .string('p')
