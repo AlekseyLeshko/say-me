@@ -64,48 +64,38 @@ describe('say-me', function() {
   });
 
   it('should processingNpmModules', function() {
-    var mockObj = {
-      test: false,
-      'say-me': true
-    };
-    sayMe.checkNpmModules = function(npmModuleArr) {
-      return mockObj;
-    };
-    sayMe.objToArr = function(npmModuleArr) {
-      return [];
-    };
+    var output = getmockStdout();
     var mockStdout = {
       code: 0,
-      output: getmockStdout()
+      output: output
     };
-    sayMe.sh.exec = function() {
+    spyOn(sayMe.sh, 'exec').and.callFake(function() {
       return mockStdout;
-    };
-    spyOn(sayMe, 'checkNpmModules').and.callThrough();
-    spyOn(sayMe.sh, 'exec').and.callThrough();
-    spyOn(sayMe, 'objToArr').and.callThrough();
+    });
+    spyOn(sayMe, 'objToArr');
+    spyOn(sayMe, 'checkNpmModules');
 
-    var obj = sayMe.processingNpmModules();
+    sayMe.processingNpmModules();
 
-    expect(obj.length).toEqual(mockObj.length);
-    expect(sayMe.checkNpmModules).toHaveBeenCalled();
-    expect(sayMe.objToArr).toHaveBeenCalled();
     expect(sayMe.sh.exec).toHaveBeenCalled();
+    var json = JSON.parse(output);
+    expect(sayMe.objToArr).toHaveBeenCalledWith(json.dependencies);
+    expect(sayMe.checkNpmModules).toHaveBeenCalled();
   });
 
   it('should processingNpmModules with error', function() {
-    sayMe.sh.exec = function() {
+    spyOn(sayMe.sh, 'exec').and.callFake(function() {
       var mockStdout = {
         code: 1
       };
       return mockStdout;
-    };
-    spyOn(sayMe.sh, 'exec').and.callThrough();
+    });
+    spyOn(console, 'log');
 
-    var obj = sayMe.processingNpmModules();
+    sayMe.processingNpmModules();
 
-    expect(obj).toEqual({});
     expect(sayMe.sh.exec).toHaveBeenCalled();
+    expect(console.log).toHaveBeenCalled();
   });
 
   it('should cleanProgramList', function() {

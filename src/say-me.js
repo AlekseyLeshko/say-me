@@ -69,13 +69,12 @@
       var stdout = this.sh.exec(this.command);
       if (stdout.code !== 0) {
         console.log('Error');
-        return {};
+        return;
       }
 
       var npmObj = JSON.parse(stdout.output);
       var npmModuleArr = this.objToArr(npmObj.dependencies);
-      var data = this.checkNpmModules(npmModuleArr);
-      return data;
+      this.checkNpmModules(npmModuleArr);
     },
 
     checkNpmModules: function(installedModules) {
