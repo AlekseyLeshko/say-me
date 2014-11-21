@@ -11,12 +11,24 @@
       'help': {
         description: 'Show help',
         short: 'h'
-      }
+      },
+      'programIsInstalled': {
+        description: 'Say installed this program or not',
+        short: 'pii'
+      },
     })
+    .alias('p', 'program')
+    .string('p')
     .argv;
 
     if (argv.h) {
       optimist.showHelp();
+      process.exit(0);
+    }
+
+    if (argv.pii && argv.p) {
+      var answer = sayMe.programIsInstalled(argv.p);
+      console.log(answer.isInstall);
       process.exit(0);
     }
 
