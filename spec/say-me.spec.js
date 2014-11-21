@@ -230,7 +230,6 @@ function getmockStdout() {
   return str;
 }
 
-
 function getMockInstalledModules() {
   var arr = [{
       version: '2.1.6',
