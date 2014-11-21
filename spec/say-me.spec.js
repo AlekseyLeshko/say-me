@@ -125,10 +125,9 @@ describe('say-me', function() {
 
     it('should checkPrograms', function() {
       var notInstalledProgram = 'test-module';
-      sayMe.sh.which = function(value) {
+      spyOn(sayMe.sh, 'which').and.callFake(function(value) {
         return value !== notInstalledProgram ? '/path/' : null;
-      };
-      spyOn(sayMe.sh, 'which').and.callThrough();
+      });
 
       strList.push(notInstalledProgram);
       sayMe.convertToProgramList(strList);
