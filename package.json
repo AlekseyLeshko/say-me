@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "jasmine": "^2.1.0",
+    "optimist": "^0.6.1",
     "shelljs": "^0.3.0"
   },
   "engines": {
