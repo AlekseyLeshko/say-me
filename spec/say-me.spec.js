@@ -266,24 +266,25 @@ describe('say-me', function() {
   });
 
   it('should', function() {
-    spyOn(sayMe, 'cleanProgramList').and.callThrough();
-    spyOn(sayMe, 'convertToProgramList').and.callThrough();
-    spyOn(sayMe, 'buildCommand').and.callThrough();
-    spyOn(sayMe, 'processingNpmModules').and.callThrough();
+    spyOn(sayMe, 'cleanProgramList');
+    spyOn(sayMe, 'convertToProgramList');
+    spyOn(sayMe, 'buildCommand');
+    spyOn(sayMe, 'processingNpmModules');
 
-    var moduleArr = [
+    var moduleNameArr = [
       'jasmine',
       'npm',
       'say-me',
       'test-module'
     ];
 
-    var arr = sayMe.npmModulesIsInstalled(moduleArr);
+    var arr = sayMe.npmModulesIsInstalled(moduleNameArr);
 
     expect(arr).toEqual(sayMe.programList);
 
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
-    expect(sayMe.convertToProgramList).toHaveBeenCalled();
+    expect(sayMe.convertToProgramList).toHaveBeenCalledWith(moduleNameArr);
+
     expect(sayMe.buildCommand).toHaveBeenCalled();
     expect(sayMe.processingNpmModules).toHaveBeenCalled();
   });
