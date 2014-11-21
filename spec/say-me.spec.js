@@ -89,42 +89,6 @@ describe('say-me', function() {
     expect(res['test-module']).toBeFalsy();
   });
 
-  it('should check', function() {
-    sayMe.buildCommand = function() {
-    };
-    spyOn(sayMe, 'buildCommand').and.callThrough();
-
-    var programs = {};
-    sayMe.check(programs);
-
-    expect(sayMe.programs).toBeDefined();
-    expect(sayMe.programs.npm).not.toBeDefined();
-    expect(sayMe.buildCommand).toHaveBeenCalled();
-  });
-
-  it('should check npm programs', function() {
-    sayMe.buildCommand = function() {
-    };
-    sayMe.processingNpmModules = function() {
-    };
-    spyOn(sayMe, 'buildCommand').and.callThrough();
-    spyOn(sayMe, 'processingNpmModules').and.callThrough();
-
-    var programs = {
-      npm: [
-        'npm',
-        'say-me',
-        'gulp',
-        'test-module'
-      ]
-    };
-    sayMe.check(programs);
-
-    expect(sayMe.programs.npm.length).toEqual(4);
-    expect(sayMe.buildCommand).toHaveBeenCalled();
-    expect(sayMe.processingNpmModules).toHaveBeenCalled();
-  });
-
   it('should processingNpmModules', function() {
     var mockObj = {
       test: false,

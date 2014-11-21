@@ -65,18 +65,6 @@
       return this.programList;
     },
 
-    check: function(programs) {
-      this.programs = programs;
-      this.buildCommand();
-
-      var data = {};
-      if (this.programs.npm) {
-        data.npm = this.processingNpmModules();
-      }
-
-      return data;
-    },
-
     processingNpmModules: function() {
       var stdout = this.sh.exec(this.command);
       if (stdout.code !== 0) {
