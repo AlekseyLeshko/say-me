@@ -51,7 +51,7 @@
     npmModuleIsInstalled: function(moduleName) {
       this.npmModulesIsInstalled([moduleName]);
 
-      return this.programList;
+      return this.programList[0];
     },
 
     npmModulesIsInstalled: function(moduleNameArr) {

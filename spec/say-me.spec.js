@@ -217,10 +217,10 @@ describe('say-me', function() {
     spyOn(sayMe, 'npmModulesIsInstalled');
     var moduleName = 'say-me';
 
-    var arr = sayMe.npmModuleIsInstalled(moduleName);
+    var value = sayMe.npmModuleIsInstalled(moduleName);
 
     expect(sayMe.npmModulesIsInstalled).toHaveBeenCalled();
-    expect(arr).toEqual(sayMe.programList);
+    expect(value).toEqual(sayMe.programList[0]);
   });
 });
 
