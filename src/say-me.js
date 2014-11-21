@@ -49,6 +49,16 @@
       }
     },
 
+    npmModulesIsInstalled: function(moduleArr) {
+      this.cleanProgramList();
+
+      this.convertToProgramList(moduleArr);
+      this.buildCommand();
+      this.processingNpmModules();
+
+      return this.programList;
+    },
+
     check: function(programs) {
       this.programs = programs;
       this.buildCommand();
