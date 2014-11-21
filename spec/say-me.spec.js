@@ -64,11 +64,11 @@ describe('say-me', function() {
 
   it('should processingNpmModules', function() {
     var output = getmockStdout();
-    var mockStdout = {
-      code: 0,
-      output: output
-    };
     spyOn(sayMe.sh, 'exec').and.callFake(function() {
+      var mockStdout = {
+        code: 0,
+        output: output
+      };
       return mockStdout;
     });
     spyOn(sayMe, 'objToArr');
