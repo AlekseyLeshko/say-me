@@ -65,7 +65,10 @@
     },
 
     processingNpmModules: function() {
-      var stdout = this.sh.exec(this.command);
+      var execOption = {
+        silent: true
+      };
+      var stdout = this.sh.exec(this.command, execOption);
       if (stdout.code !== 0) {
         console.log('Error');
         return;
