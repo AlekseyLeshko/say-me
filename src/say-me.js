@@ -49,6 +49,12 @@
       }
     },
 
+    npmModuleIsInstalled: function(moduleName) {
+      this.npmModulesIsInstalled([moduleName]);
+
+      return this.programList;
+    },
+
     npmModulesIsInstalled: function(moduleArr) {
       this.cleanProgramList();
 

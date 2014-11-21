@@ -287,6 +287,16 @@ describe('say-me', function() {
     expect(sayMe.buildCommand).toHaveBeenCalled();
     expect(sayMe.processingNpmModules).toHaveBeenCalled();
   });
+
+  it('should npmModuleIsInstalled', function() {
+    spyOn(sayMe, 'npmModulesIsInstalled');
+    var moduleName = 'say-me';
+
+    var arr = sayMe.npmModuleIsInstalled(moduleName);
+
+    expect(sayMe.npmModulesIsInstalled).toHaveBeenCalled();
+    expect(arr).toEqual(sayMe.programList);
+  });
 });
 
 function getmockStdout() {
