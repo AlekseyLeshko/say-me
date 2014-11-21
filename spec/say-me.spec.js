@@ -143,22 +143,19 @@ describe('say-me', function() {
   });
 
   it('should programIsInstalled return isInstall = true', function() {
-    sayMe.checkPrograms = function() {
-      this.programList[0].isInstall = true;
-    };
-    spyOn(sayMe, 'cleanProgramList').and.callThrough();
-    spyOn(sayMe, 'convertToProgramList').and.callThrough();
-    spyOn(sayMe, 'checkPrograms').and.callThrough();
-
     var programName = 'node';
+
+    spyOn(sayMe, 'programsIsInstalled').and.callFake(function() {
+      sayMe.programList = [{
+        name: programName,
+        isInstall: true
+      }];
+    });
 
     var obj = sayMe.programIsInstalled(programName);
 
-    expect(obj.name).toEqual(programName);
-    expect(obj.isInstall).toBeTruthy();
-    expect(sayMe.cleanProgramList).toHaveBeenCalled();
-    expect(sayMe.convertToProgramList).toHaveBeenCalled();
-    expect(sayMe.checkPrograms).toHaveBeenCalled();
+    expect(obj).toEqual(sayMe.programList[0]);
+    expect(sayMe.programsIsInstalled).toHaveBeenCalledWith([programName]);
   });
 
   it('should programIsInstalled return isInstall = true', function() {
