@@ -1,0 +1,34 @@
+{
+  "name": "say-me",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./src/say-me.js",
+  "homepage": "https://github.com/AlekseyLeshko/say-me",
+  "author": "Aleksey Leshko (https://github.com/AlekseyLeshko)",
+  "contributors": [
+    "Aleksey Leshko <alekseyleshko@gmail.com>"
+  ],
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlekseyLeshko/say-me.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlekseyLeshko/say-me/issues"
+  },
+  "dependencies": {
+    "jasmine": "^2.1.0",
+    "shelljs": "^0.3.0"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin"
+  },
+  "devDependencies": {}
+}
