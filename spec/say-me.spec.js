@@ -13,7 +13,6 @@ describe('say-me', function() {
     expect(sayMe.defaultCommand).toEqual(expected);
     expect(sayMe.command).toEqual('');
     expect(sayMe.isGlobal).toBeFalsy();
-    expect(sayMe.programs).toEqual({});
     expect(sayMe.sh).toBeDefined();
     expect(sayMe.programList.length).toEqual(0);
   });

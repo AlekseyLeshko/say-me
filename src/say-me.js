@@ -12,7 +12,6 @@
       this.defaultCommand = 'npm ls --depth=0 --json';
       this.command = '';
       this.isGlobal = false;
-      this.programs = {};
       this.sh = sh;
       this.programList = [];
     },
