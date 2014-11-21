@@ -15,11 +15,21 @@
       'programIsInstalled': {
         description: 'Say installed this program or not',
         short: 'pii'
+      },
+      'programsIsInstalled': {
+        description: 'Say installed this programs or not',
+        short: 'psii'
       }
     })
     .alias('p', 'program')
     .string('p')
+    .boolean('programIsInstalled')
+    .boolean('pii')
+    .boolean('programsIsInstalled')
+    .boolean('psii')
     .argv;
+
+    console.dir(argv);
 
     if (argv.h) {
       optimist.showHelp();
@@ -29,6 +39,12 @@
     if (argv.pii && argv.p) {
       var answer = sayMe.programIsInstalled(argv.p);
       console.log(answer.isInstall);
+      process.exit(0);
+    }
+
+    if (argv.psii && argv._.length > 0) {
+      var answer = sayMe.programsIsInstalled(argv._);
+      console.log(answer);
       process.exit(0);
     }
 
