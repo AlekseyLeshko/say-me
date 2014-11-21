@@ -55,10 +55,10 @@
       return this.programList;
     },
 
-    npmModulesIsInstalled: function(moduleArr) {
+    npmModulesIsInstalled: function(moduleNameArr) {
       this.cleanProgramList();
 
-      this.convertToProgramList(moduleArr);
+      this.convertToProgramList(moduleNameArr);
       this.buildCommand();
       this.processingNpmModules();
 
