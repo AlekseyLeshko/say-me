@@ -44,16 +44,6 @@ describe('say-me', function() {
     expect(arr.length).toEqual(2);
   });
 
-  it('should objToArr', function() {
-    var obj = {
-      test: 'test',
-      value: 'value'
-    };
-
-    var arr = sayMe.objToArr(obj);
-    expect(arr.length).toEqual(2);
-  });
-
   it('should checkNpmModules', function() {
     var arr = [{
         version: '2.1.6',
