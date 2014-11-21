@@ -79,18 +79,16 @@
     },
 
     checkNpmModules: function(installedModules) {
-      var data = {};
-      for (var i = 0; i < this.programs.npm.length; i++) {
-        var val = false;
+      for (var i = 0; i < this.programList.length; i++) {
+        var program = this.programList[i];
+        program.isInstall = false;
         for (var j = 0; j < installedModules.length; j++) {
-          if (this.programs.npm[i] === installedModules[j].name) {
-            val = true;
+          if (program.name === installedModules[j].name) {
+            program.isInstall = true;
             break;
           }
         }
-        data[this.programs.npm[i]] = val;
       }
-      return data;
     },
 
     cleanProgramList: function() {
