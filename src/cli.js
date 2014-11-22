@@ -25,10 +25,6 @@
     })
     .alias('p', 'program')
     .string('p')
-    .boolean('programIsInstalled')
-    .boolean('pii')
-    .boolean('programsIsInstalled')
-    .boolean('psii')
     .argv;
 
     console.dir(argv);
