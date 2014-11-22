@@ -13,8 +13,10 @@
         short: 'h'
       },
       'programIsInstalled': {
+        boolean: true,
         description: 'Say installed this program or not',
-        short: 'pii'
+        short: 'pii',
+        alias: 'pii'
       },
       'programsIsInstalled': {
         description: 'Say installed this programs or not',
