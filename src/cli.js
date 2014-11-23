@@ -24,14 +24,24 @@
         short: 'psii',
         alias: 'psii'
       },
+      'npmModuleIsInstalled': {
+        boolean: true,
+        description: 'Say installed this npm module or not',
+        short: 'npmmii',
+        alias: 'npmmii'
+      },
+      'npmModulesIsInstalled': {
+        boolean: true,
+        description: 'Say installed this npm modules or not',
+        short: 'npmmsii',
+        alias: 'npmmsii'
+      },
       'program': {
         alias: 'p',
         string: true
       }
     })
     .argv;
-
-    console.dir(argv);
 
     if (argv.h) {
       optimist.showHelp();
@@ -46,6 +56,18 @@
 
     if (argv.psii && argv._.length > 0) {
       var answer = sayMe.programsIsInstalled(argv._);
+      console.log(answer);
+      process.exit(0);
+    }
+
+    if (argv.npmmii && argv.p) {
+      var answer = sayMe.npmModuleIsInstalled(argv.p);
+      console.log(answer.isInstall);
+      process.exit(0);
+    }
+
+    if (argv.npmmsii && argv._.length > 0) {
+      var answer = sayMe.npmModulesIsInstalled(argv._);
       console.log(answer);
       process.exit(0);
     }
