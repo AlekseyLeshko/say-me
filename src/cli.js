@@ -39,6 +39,10 @@
       'program': {
         alias: 'p',
         string: true
+      },
+      'global': {
+        alias: 'g',
+        boolean: true
       }
     })
     .argv;
@@ -46,6 +50,10 @@
     if (argv.h) {
       optimist.showHelp();
       process.exit(0);
+    }
+
+    if (argv.g) {
+      sayMe.isGlobal = true;
     }
 
     if (argv.pii && argv.p) {
