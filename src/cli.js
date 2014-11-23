@@ -19,8 +19,10 @@
         alias: 'pii'
       },
       'programsIsInstalled': {
+        boolean: true,
         description: 'Say installed this programs or not',
-        short: 'psii'
+        short: 'psii',
+        alias: 'psii'
       },
       'program': {
         alias: 'p',
