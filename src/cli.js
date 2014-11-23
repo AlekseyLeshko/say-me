@@ -21,10 +21,12 @@
       'programsIsInstalled': {
         description: 'Say installed this programs or not',
         short: 'psii'
+      },
+      'program': {
+        alias: 'p',
+        string: true
       }
     })
-    .alias('p', 'program')
-    .string('p')
     .argv;
 
     console.dir(argv);
