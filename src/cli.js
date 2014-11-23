@@ -9,8 +9,10 @@
 
     var argv = optimist.usage('Usage: say-me <command>', {
       'help': {
+        boolean: true,
         description: 'Show help',
-        short: 'h'
+        short: 'h',
+        alias: 'h'
       },
       'programIsInstalled': {
         boolean: true,
