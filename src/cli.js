@@ -81,8 +81,6 @@
       console.log(answer);
       process.exit(0);
     }
-
-    optimist.showHelp();
   };
 
   main();
