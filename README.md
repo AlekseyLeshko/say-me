@@ -101,3 +101,5 @@ console.log(answerList);
   { name: 'test-module', isInstall: false },
   { name: 'jasmine', isInstall: true },
   { name: 'shelljs', isInstall: false } ]
+
+#### [Examples](https://github.com/AlekseyLeshko/say-me/tree/master/example)
