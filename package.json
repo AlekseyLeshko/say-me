@@ -1,6 +1,6 @@
 {
   "name": "say-me",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "./src/say-me.js",
   "homepage": "https://github.com/AlekseyLeshko/say-me",
