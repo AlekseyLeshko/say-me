@@ -102,4 +102,15 @@ console.log(answerList);
   { name: 'jasmine', isInstall: true },
   { name: 'shelljs', isInstall: false } ]
 
+#### Using in console
+Need install say-me module as global module
+```
+say-me --pii -p git
+say-me --psii git node npm
+say-me --npmmii -p say-me
+say-me --npmmsii say-me jasmine
+say-me --npmmsii -g say-me jasmine
+```
+
+
 #### [Examples](https://github.com/AlekseyLeshko/say-me/tree/master/example)
