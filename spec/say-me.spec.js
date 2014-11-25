@@ -169,14 +169,14 @@ describe('say-me', function() {
 
     spyOn(sayMe, 'cleanProgramList');
     spyOn(sayMe, 'convertToProgramList');
-    spyOn(sayMe, 'checkPrograms').and.callFake(function() {
-      sayMe.programList = [];
-      sayMe.programList.length = strList.length;
+    spyOn(sayMe, 'checkPrograms');
+    spyOn(sayMe, 'allInstalled').and.callFake(function() {
+      return true;
     });
 
-    var arr = sayMe.programsIsInstalled(strList);
+    var res = sayMe.programsIsInstalled(strList);
 
-    expect(arr.length).toEqual(strList.length);
+    expect(res).toBeTruthy();;
 
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
     expect(sayMe.convertToProgramList).toHaveBeenCalledWith(strList);

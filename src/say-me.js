@@ -26,8 +26,9 @@
 
       this.convertToProgramList(arr);
       this.checkPrograms();
+      var res = this.allInstalled();
 
-      return this.programList;
+      return res;
     },
 
     convertToProgramList: function(strList) {

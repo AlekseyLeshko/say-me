@@ -38,11 +38,13 @@ var programList = [
   'jasmine',
   'shelljs'
 ];
-var answerList = sayMe.programsIsInstalled(programList);
-console.log(answerList);
+var res = sayMe.programsIsInstalled(programList);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
 >
+false
 [ { name: 'git', isInstall: true },
   { name: 'npm', isInstall: true },
   { name: 'say-me', isInstall: true },

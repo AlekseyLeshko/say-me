@@ -11,7 +11,10 @@ var programList = [
   'shelljs'
 ];
 
-var answer = sayMe.programIsInstalled(programName);
-console.log(answer);
-var answerList = sayMe.programsIsInstalled(programList);
-console.log(answerList);
+var res = sayMe.programIsInstalled(programName);
+console.log(res);
+console.log(sayMe.programList);
+
+res = sayMe.programsIsInstalled(programList);
+console.log(res);
+console.log(sayMe.programList);
