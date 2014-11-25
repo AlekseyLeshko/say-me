@@ -17,8 +17,8 @@
     },
 
     programIsInstalled: function(name) {
-      this.programsIsInstalled([name]);
-      return this.programList[0];
+      var res = this.programsIsInstalled([name]);
+      return res;
     },
 
     programsIsInstalled: function(arr) {

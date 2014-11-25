@@ -145,18 +145,15 @@ describe('say-me', function() {
   });
 
   it('should programIsInstalled return isInstall = true', function() {
-    var programName = 'node';
-
     spyOn(sayMe, 'programsIsInstalled').and.callFake(function() {
-      sayMe.programList = [{
-        name: programName,
-        isInstall: true
-      }];
+      return true;
     });
 
-    var obj = sayMe.programIsInstalled(programName);
+    var programName = 'node';
 
-    expect(obj).toEqual(sayMe.programList[0]);
+    var res = sayMe.programIsInstalled(programName);
+
+    expect(res).toBeTruthy();
     expect(sayMe.programsIsInstalled).toHaveBeenCalledWith([programName]);
   });
 

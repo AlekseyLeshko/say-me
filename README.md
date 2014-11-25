@@ -22,11 +22,14 @@ var sayMe = new SayMe();
 ##### Program is installed
 ```javascript
 var programName = 'npm';
-var answer = sayMe.programIsInstalled(programName);
-console.log(answer);
+var res = sayMe.programIsInstalled(programName);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
-> { name: 'npm', isInstall: true }
+>
+true
+[ { name: 'npm', isInstall: true } ]
 
 ##### Programs is installed
 ```javascript
