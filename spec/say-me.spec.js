@@ -1,5 +1,7 @@
 'use strict';
 var SayMe = require('../src/say-me');
+var getMockStdout = require('./helpers/mockStdout.js');
+var getMockInstalledModules = require('./helpers/mockInstalledModules.js');
 
 describe('say-me', function() {
   var sayMe;
@@ -63,7 +65,7 @@ describe('say-me', function() {
   });
 
   it('should processingNpmModules', function() {
-    var output = getmockStdout();
+    var output = getMockStdout();
     spyOn(sayMe.sh, 'exec').and.callFake(function() {
       var mockStdout = {
         code: 0,
@@ -215,29 +217,3 @@ describe('say-me', function() {
     expect(value).toEqual(sayMe.programList[0]);
   });
 });
-
-function getmockStdout() {
-  var str = '{"dependencies":{"npm":{"version":"2.1.6","from":"npm@","resolved":"https://registry.npmjs.org/npm/-/npm-2.1.6.tgz"}}}';
-  return str;
-}
-
-function getMockInstalledModules() {
-  var arr = [{
-      version: '2.1.6',
-      from: 'npm@',
-      resolved: 'https://registry.npmjs.org/npm/-/npm-2.1.6.tgz',
-      name: 'npm'
-    }, {
-      version: '3.8.10',
-      from: 'gulp@*',
-      resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz',
-      name: 'gulp'
-    }, {
-      version: '0.0.1',
-      from: 'say-me@',
-      resolved: '',
-      name: 'say-me'
-    }
-  ];
-  return arr;
-}
