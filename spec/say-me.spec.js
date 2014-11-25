@@ -158,12 +158,6 @@ describe('say-me', function() {
   });
 
   it('should programsIsInstalled', function() {
-    var strList = [
-      'node',
-      'npm',
-      'test-module'
-    ];
-
     spyOn(sayMe, 'cleanProgramList');
     spyOn(sayMe, 'convertToProgramList');
     spyOn(sayMe, 'checkPrograms');
@@ -171,10 +165,15 @@ describe('say-me', function() {
       return true;
     });
 
+    var strList = [
+      'node',
+      'npm',
+      'test-module'
+    ];
+
     var res = sayMe.programsIsInstalled(strList);
 
-    expect(res).toBeTruthy();;
-
+    expect(res).toBeTruthy();
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
     expect(sayMe.convertToProgramList).toHaveBeenCalledWith(strList);
     expect(sayMe.checkPrograms).toHaveBeenCalled();
