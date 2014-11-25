@@ -160,7 +160,7 @@ describe('say-me', function() {
     expect(sayMe.programsIsInstalled).toHaveBeenCalledWith([programName]);
   });
 
-  it('should programIsInstalled return isInstall = true', function() {
+  it('should programsIsInstalled', function() {
     var strList = [
       'node',
       'npm',
