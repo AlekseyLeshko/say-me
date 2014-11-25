@@ -2,6 +2,8 @@ say-me
 ======
 This npm module say you what programs or npm modules installed on current machine.
 
+[![NPM](https://nodei.co/npm/say-me.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/testimonial/)
+
 #### Install
 ```
 // local
