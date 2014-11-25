@@ -216,4 +216,29 @@ describe('say-me', function() {
     expect(sayMe.npmModulesIsInstalled).toHaveBeenCalled();
     expect(value).toEqual(sayMe.programList[0]);
   });
+
+  it('should allInstalled return true', function() {
+    sayMe.programList = [{
+      isInstall: true
+    }, {
+      isInstall: true
+    }];
+
+    var value = sayMe.allInstalled();
+
+    expect(value).toBeTruthy();
+    sayMe.programList.length = 0;
+  });
+
+  it('should allInstalled return false', function() {
+    sayMe.programList = [{
+      isInstall: true
+    }, {
+      isInstall: false
+    }];
+    var value = sayMe.allInstalled();
+
+    expect(value).toBeFalsy();
+    sayMe.programList.length = 0;
+  });
 });

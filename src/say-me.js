@@ -113,6 +113,16 @@
         }
       }
       return arr;
+    },
+
+    allInstalled: function() {
+      for (var i = 0; i < this.programList.length; i++) {
+        var program = this.programList[i];
+        if (!program.isInstall) {
+          return false;
+        }
+      }
+      return true;
     }
   };
 
