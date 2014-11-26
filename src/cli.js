@@ -60,7 +60,7 @@
 
     if (argv.pii && argv.p) {
       var answer = sayMe.programIsInstalled(argv.p);
-      console.log(answer.isInstall);
+      console.log(answer);
       process.exit(0);
     }
 
@@ -72,7 +72,7 @@
 
     if (argv.npmmii && argv.p) {
       var answer = sayMe.npmModuleIsInstalled(argv.p);
-      console.log(answer.isInstall);
+      console.log(answer);
       process.exit(0);
     }
 
