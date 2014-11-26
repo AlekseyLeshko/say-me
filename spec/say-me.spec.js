@@ -184,6 +184,9 @@ describe('say-me', function() {
     spyOn(sayMe, 'convertToProgramList');
     spyOn(sayMe, 'buildCommand');
     spyOn(sayMe, 'processingNpmModules');
+    spyOn(sayMe, 'allInstalled').and.callFake(function() {
+      return true;
+    });
 
     var moduleNameArr = [
       'jasmine',
@@ -192,25 +195,26 @@ describe('say-me', function() {
       'test-module'
     ];
 
-    var arr = sayMe.npmModulesIsInstalled(moduleNameArr);
+    var res = sayMe.npmModulesIsInstalled(moduleNameArr);
 
-    expect(arr).toEqual(sayMe.programList);
-
+    expect(res).toBeTruthy();
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
     expect(sayMe.convertToProgramList).toHaveBeenCalledWith(moduleNameArr);
-
     expect(sayMe.buildCommand).toHaveBeenCalled();
     expect(sayMe.processingNpmModules).toHaveBeenCalled();
+    expect(sayMe.allInstalled).toHaveBeenCalled();
   });
 
   it('should npmModuleIsInstalled', function() {
-    spyOn(sayMe, 'npmModulesIsInstalled');
+    spyOn(sayMe, 'npmModulesIsInstalled').and.callFake(function() {
+      return true;
+    });
     var moduleName = 'say-me';
 
-    var value = sayMe.npmModuleIsInstalled(moduleName);
+    var res = sayMe.npmModuleIsInstalled(moduleName);
 
+    expect(res).toBeTruthy();
     expect(sayMe.npmModulesIsInstalled).toHaveBeenCalled();
-    expect(value).toEqual(sayMe.programList[0]);
   });
 
   it('should allInstalled return true', function() {

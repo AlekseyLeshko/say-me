@@ -50,9 +50,8 @@
     },
 
     npmModuleIsInstalled: function(moduleName) {
-      this.npmModulesIsInstalled([moduleName]);
-
-      return this.programList[0];
+      var res = this.npmModulesIsInstalled([moduleName]);
+      return res;
     },
 
     npmModulesIsInstalled: function(moduleNameArr) {
@@ -61,8 +60,9 @@
       this.convertToProgramList(moduleNameArr);
       this.buildCommand();
       this.processingNpmModules();
+      var res = this.allInstalled();
 
-      return this.programList;
+      return res;
     },
 
     processingNpmModules: function() {

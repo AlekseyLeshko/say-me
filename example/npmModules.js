@@ -1,7 +1,7 @@
 var SayMe = require('../src/say-me');
 var sayMe = new SayMe();
 
-var moduleName = 'npm';
+var moduleName = 'shelljs';
 var moduleArr = [
   'git',
   'npm',
@@ -13,9 +13,17 @@ var moduleArr = [
 
 var res = sayMe.npmModuleIsInstalled(moduleName);
 console.log(res);
-var arr = sayMe.npmModulesIsInstalled(moduleArr);
-console.log(arr);
+console.log(sayMe.programList);
+
+res = sayMe.npmModulesIsInstalled(moduleArr);
+console.log(res);
+console.log(sayMe.programList);
 
 sayMe.isGlobal = true;
-arr = sayMe.npmModulesIsInstalled(moduleArr);
-console.log(arr);
+moduleArr = [
+  'npm',
+  'jasmine'
+];
+res = sayMe.npmModulesIsInstalled(moduleArr);
+console.log(res);
+console.log(sayMe.programList);
