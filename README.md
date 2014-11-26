@@ -119,3 +119,11 @@ say-me --npmmsii -g say-me jasmine
 ```
 
 #### [Examples](https://github.com/AlekseyLeshko/say-me/tree/master/example)
+
+
+#### Start
+```
+git clone git@github.com:AlekseyLeshko/say-me.git
+cd say-me
+make
+```
