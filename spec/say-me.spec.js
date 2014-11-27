@@ -1,5 +1,7 @@
 'use strict';
 var SayMe = require('../src/say-me');
+var getMockStdout = require('./helpers/mockStdout.js');
+var getMockInstalledModules = require('./helpers/mockInstalledModules.js');
 
 describe('say-me', function() {
   var sayMe;
@@ -63,7 +65,7 @@ describe('say-me', function() {
   });
 
   it('should processingNpmModules', function() {
-    var output = getmockStdout();
+    var output = getMockStdout();
     spyOn(sayMe.sh, 'exec').and.callFake(function() {
       var mockStdout = {
         code: 0,
@@ -143,39 +145,35 @@ describe('say-me', function() {
   });
 
   it('should programIsInstalled return isInstall = true', function() {
-    var programName = 'node';
-
     spyOn(sayMe, 'programsIsInstalled').and.callFake(function() {
-      sayMe.programList = [{
-        name: programName,
-        isInstall: true
-      }];
+      return true;
     });
 
-    var obj = sayMe.programIsInstalled(programName);
+    var programName = 'node';
 
-    expect(obj).toEqual(sayMe.programList[0]);
+    var res = sayMe.programIsInstalled(programName);
+
+    expect(res).toBeTruthy();
     expect(sayMe.programsIsInstalled).toHaveBeenCalledWith([programName]);
   });
 
-  it('should programIsInstalled return isInstall = true', function() {
+  it('should programsIsInstalled', function() {
+    spyOn(sayMe, 'cleanProgramList');
+    spyOn(sayMe, 'convertToProgramList');
+    spyOn(sayMe, 'checkPrograms');
+    spyOn(sayMe, 'allInstalled').and.callFake(function() {
+      return true;
+    });
+
     var strList = [
       'node',
       'npm',
       'test-module'
     ];
 
-    spyOn(sayMe, 'cleanProgramList');
-    spyOn(sayMe, 'convertToProgramList');
-    spyOn(sayMe, 'checkPrograms').and.callFake(function() {
-      sayMe.programList = [];
-      sayMe.programList.length = strList.length;
-    });
+    var res = sayMe.programsIsInstalled(strList);
 
-    var arr = sayMe.programsIsInstalled(strList);
-
-    expect(arr.length).toEqual(strList.length);
-
+    expect(res).toBeTruthy();
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
     expect(sayMe.convertToProgramList).toHaveBeenCalledWith(strList);
     expect(sayMe.checkPrograms).toHaveBeenCalled();
@@ -186,6 +184,9 @@ describe('say-me', function() {
     spyOn(sayMe, 'convertToProgramList');
     spyOn(sayMe, 'buildCommand');
     spyOn(sayMe, 'processingNpmModules');
+    spyOn(sayMe, 'allInstalled').and.callFake(function() {
+      return true;
+    });
 
     var moduleNameArr = [
       'jasmine',
@@ -194,50 +195,50 @@ describe('say-me', function() {
       'test-module'
     ];
 
-    var arr = sayMe.npmModulesIsInstalled(moduleNameArr);
+    var res = sayMe.npmModulesIsInstalled(moduleNameArr);
 
-    expect(arr).toEqual(sayMe.programList);
-
+    expect(res).toBeTruthy();
     expect(sayMe.cleanProgramList).toHaveBeenCalled();
     expect(sayMe.convertToProgramList).toHaveBeenCalledWith(moduleNameArr);
-
     expect(sayMe.buildCommand).toHaveBeenCalled();
     expect(sayMe.processingNpmModules).toHaveBeenCalled();
+    expect(sayMe.allInstalled).toHaveBeenCalled();
   });
 
   it('should npmModuleIsInstalled', function() {
-    spyOn(sayMe, 'npmModulesIsInstalled');
+    spyOn(sayMe, 'npmModulesIsInstalled').and.callFake(function() {
+      return true;
+    });
     var moduleName = 'say-me';
 
-    var value = sayMe.npmModuleIsInstalled(moduleName);
+    var res = sayMe.npmModuleIsInstalled(moduleName);
 
+    expect(res).toBeTruthy();
     expect(sayMe.npmModulesIsInstalled).toHaveBeenCalled();
-    expect(value).toEqual(sayMe.programList[0]);
+  });
+
+  it('should allInstalled return true', function() {
+    sayMe.programList = [{
+      isInstall: true
+    }, {
+      isInstall: true
+    }];
+
+    var value = sayMe.allInstalled();
+
+    expect(value).toBeTruthy();
+    sayMe.programList.length = 0;
+  });
+
+  it('should allInstalled return false', function() {
+    sayMe.programList = [{
+      isInstall: true
+    }, {
+      isInstall: false
+    }];
+    var value = sayMe.allInstalled();
+
+    expect(value).toBeFalsy();
+    sayMe.programList.length = 0;
   });
 });
-
-function getmockStdout() {
-  var str = '{"dependencies":{"npm":{"version":"2.1.6","from":"npm@","resolved":"https://registry.npmjs.org/npm/-/npm-2.1.6.tgz"}}}';
-  return str;
-}
-
-function getMockInstalledModules() {
-  var arr = [{
-      version: '2.1.6',
-      from: 'npm@',
-      resolved: 'https://registry.npmjs.org/npm/-/npm-2.1.6.tgz',
-      name: 'npm'
-    }, {
-      version: '3.8.10',
-      from: 'gulp@*',
-      resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz',
-      name: 'gulp'
-    }, {
-      version: '0.0.1',
-      from: 'say-me@',
-      resolved: '',
-      name: 'say-me'
-    }
-  ];
-  return arr;
-}

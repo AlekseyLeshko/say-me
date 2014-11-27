@@ -2,6 +2,10 @@ say-me
 ======
 This npm module say you what programs or npm modules installed on current machine.
 
+Npm module [say-me](https://github.com/AlekseyLeshko/say-me) used npm module [say-me](https://github.com/AlekseyLeshko/say-me) and it is cool!
+
+[![NPM](https://nodei.co/npm/say-me.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/say-me/)
+
 #### Install
 ```
 // local
@@ -20,11 +24,14 @@ var sayMe = new SayMe();
 ##### Program is installed
 ```javascript
 var programName = 'npm';
-var answer = sayMe.programIsInstalled(programName);
-console.log(answer);
+var res = sayMe.programIsInstalled(programName);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
-> { name: 'npm', isInstall: true }
+>
+true
+[ { name: 'npm', isInstall: true } ]
 
 ##### Programs is installed
 ```javascript
@@ -36,11 +43,13 @@ var programList = [
   'jasmine',
   'shelljs'
 ];
-var answerList = sayMe.programsIsInstalled(programList);
-console.log(answerList);
+var res = sayMe.programsIsInstalled(programList);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
 >
+false
 [ { name: 'git', isInstall: true },
   { name: 'npm', isInstall: true },
   { name: 'say-me', isInstall: true },
@@ -50,12 +59,15 @@ console.log(answerList);
 
 ##### Npm module is installed
 ```javascript
-var moduleName = 'npm';
-var answer = sayMe.npmModuleIsInstalled(moduleName);
-console.log(answer);
+var moduleName = 'shelljs';
+var res = sayMe.npmModuleIsInstalled(moduleName);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
-> { name: 'npm', isInstall: false }
+>
+true
+[ { name: 'shelljs', isInstall: true } ]
 
 ##### Npm modules is installed
 ```javascript
@@ -67,11 +79,13 @@ var moduleArr = [
   'jasmine',
   'shelljs'
 ];
-var answerList = sayMe.npmModulesIsInstalled(moduleArr);
-console.log(answerList);
+var res = sayMe.npmModulesIsInstalled(moduleArr);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
 >
+false
 [ { name: 'git', isInstall: false },
   { name: 'npm', isInstall: false },
   { name: 'say-me', isInstall: false },
@@ -82,35 +96,29 @@ console.log(answerList);
 ##### Npm module is installed with global flag
 ```javascript
 sayMe.isGlobal = true;
-var moduleArr = [
-  'git',
+moduleArr = [
   'npm',
-  'say-me',
-  'test-module',
-  'jasmine',
-  'shelljs'
+  'jasmine'
 ];
-var answerList = sayMe.npmModulesIsInstalled(moduleArr);
-console.log(answerList);
+var res = sayMe.npmModulesIsInstalled(moduleArr);
+console.log(res);
+console.log(sayMe.programList);
 ```
 
 >
-[ { name: 'git', isInstall: false },
-  { name: 'npm', isInstall: true },
-  { name: 'say-me', isInstall: true },
-  { name: 'test-module', isInstall: false },
-  { name: 'jasmine', isInstall: true },
-  { name: 'shelljs', isInstall: false } ]
+true
+[ { name: 'npm', isInstall: true },
+  { name: 'jasmine', isInstall: true } ]
 
 #### Using in console
 Need install say-me module as global module
-```
-say-me --pii -p git
-say-me --psii git node npm
-say-me --npmmii -p say-me
-say-me --npmmsii say-me jasmine
-say-me --npmmsii -g say-me jasmine
-```
-
+<script src="https://gist.github.com/AlekseyLeshko/a79addafd0de10e55ee0.js"></script>
 
 #### [Examples](https://github.com/AlekseyLeshko/say-me/tree/master/example)
+
+#### Start
+```
+git clone git@github.com:AlekseyLeshko/say-me.git
+cd say-me
+make
+```

@@ -17,8 +17,8 @@
     },
 
     programIsInstalled: function(name) {
-      this.programsIsInstalled([name]);
-      return this.programList[0];
+      var res = this.programsIsInstalled([name]);
+      return res;
     },
 
     programsIsInstalled: function(arr) {
@@ -26,8 +26,9 @@
 
       this.convertToProgramList(arr);
       this.checkPrograms();
+      var res = this.allInstalled();
 
-      return this.programList;
+      return res;
     },
 
     convertToProgramList: function(strList) {
@@ -49,9 +50,8 @@
     },
 
     npmModuleIsInstalled: function(moduleName) {
-      this.npmModulesIsInstalled([moduleName]);
-
-      return this.programList[0];
+      var res = this.npmModulesIsInstalled([moduleName]);
+      return res;
     },
 
     npmModulesIsInstalled: function(moduleNameArr) {
@@ -60,8 +60,9 @@
       this.convertToProgramList(moduleNameArr);
       this.buildCommand();
       this.processingNpmModules();
+      var res = this.allInstalled();
 
-      return this.programList;
+      return res;
     },
 
     processingNpmModules: function() {
@@ -113,6 +114,16 @@
         }
       }
       return arr;
+    },
+
+    allInstalled: function() {
+      for (var i = 0; i < this.programList.length; i++) {
+        var program = this.programList[i];
+        if (!program.isInstall) {
+          return false;
+        }
+      }
+      return true;
     }
   };
 
