@@ -65,38 +65,13 @@ describe('say-me', function() {
   });
 
   it('should processingNpmModules', function() {
-    var output = getMockStdout();
-    spyOn(sayMe.sh, 'exec').and.callFake(function() {
-      var mockStdout = {
-        code: 0,
-        output: output
-      };
-      return mockStdout;
-    });
-    spyOn(sayMe, 'objToArr');
+    spyOn(sayMe, 'getNpmModuleArr');
     spyOn(sayMe, 'checkNpmModules');
 
     sayMe.processingNpmModules();
 
-    expect(sayMe.sh.exec).toHaveBeenCalled();
-    var json = JSON.parse(output);
-    expect(sayMe.objToArr).toHaveBeenCalledWith(json.dependencies);
+    expect(sayMe.getNpmModuleArr).toHaveBeenCalled();
     expect(sayMe.checkNpmModules).toHaveBeenCalled();
-  });
-
-  it('should processingNpmModules with error', function() {
-    spyOn(sayMe.sh, 'exec').and.callFake(function() {
-      var mockStdout = {
-        code: 1
-      };
-      return mockStdout;
-    });
-    spyOn(console, 'log');
-
-    sayMe.processingNpmModules();
-
-    expect(sayMe.sh.exec).toHaveBeenCalled();
-    expect(console.log).toHaveBeenCalled();
   });
 
   it('should cleanProgramList', function() {
@@ -240,5 +215,57 @@ describe('say-me', function() {
 
     expect(value).toBeFalsy();
     sayMe.programList.length = 0;
+  });
+
+  it('should getAllNpmModules', function() {
+    spyOn(sayMe, 'buildCommand');
+    spyOn(sayMe, 'getNpmModuleArr').and.callFake(function() {
+      return [1, 2 ,3];
+    });
+
+    var arr = sayMe.getAllNpmModules();
+
+    expect(arr.length).toEqual(3);
+    expect(sayMe.buildCommand).toHaveBeenCalled();
+    expect(sayMe.getNpmModuleArr).toHaveBeenCalled();
+  });
+
+  it('should getNpmModuleArr', function() {
+    var output = getMockStdout();
+    spyOn(sayMe.sh, 'exec').and.callFake(function() {
+      var mockStdout = {
+        code: 0,
+        output: output
+      };
+      return mockStdout;
+    });
+
+    var expected = [1, 2, 3];
+    spyOn(sayMe, 'objToArr').and.callFake(function() {
+      return expected;
+    });
+
+    var arr = sayMe.getNpmModuleArr();
+
+    expect(arr).toEqual(expected);
+    expect(sayMe.sh.exec).toHaveBeenCalled();
+    var json = JSON.parse(output);
+    expect(sayMe.objToArr).toHaveBeenCalledWith(json.dependencies);
+  });
+
+  it('should getNpmModuleArr with error', function() {
+    spyOn(sayMe.sh, 'exec').and.callFake(function() {
+      var mockStdout = {
+        code: 1
+      };
+      return mockStdout;
+    });
+    spyOn(console, 'log');
+
+    var res = sayMe.getNpmModuleArr();
+
+    expect(res).toBeUndefined();
+    expect(sayMe.sh.exec).toHaveBeenCalled();
+    expect(console.log).toHaveBeenCalled();
   });
 });

@@ -16,6 +16,28 @@
       this.programList = [];
     },
 
+    getAllNpmModules: function() {
+      this.buildCommand();
+      var npmModuleArr = this.getNpmModuleArr();
+
+      return npmModuleArr;
+    },
+
+    getNpmModuleArr: function() {
+      var execOption = {
+        silent: true
+      };
+      var stdout = this.sh.exec(this.command, execOption);
+      if (stdout.code !== 0) {
+        console.log('Error');
+        return;
+      }
+
+      var npmObj = JSON.parse(stdout.output);
+      var npmModuleArr = this.objToArr(npmObj.dependencies);
+      return npmModuleArr;
+    },
+
     programIsInstalled: function(name) {
       var res = this.programsIsInstalled([name]);
       return res;
@@ -66,17 +88,7 @@
     },
 
     processingNpmModules: function() {
-      var execOption = {
-        silent: true
-      };
-      var stdout = this.sh.exec(this.command, execOption);
-      if (stdout.code !== 0) {
-        console.log('Error');
-        return;
-      }
-
-      var npmObj = JSON.parse(stdout.output);
-      var npmModuleArr = this.objToArr(npmObj.dependencies);
+      var npmModuleArr = this.getNpmModuleArr();
       this.checkNpmModules(npmModuleArr);
     },
 
