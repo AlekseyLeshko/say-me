@@ -112,7 +112,14 @@ true
 
 #### Using in console
 Need install say-me module as global module
-<script src="https://gist.github.com/AlekseyLeshko/a79addafd0de10e55ee0.js"></script>
+```
+say-me
+say-me --pii -p git
+say-me --psii git node npm
+say-me --npmmii -p say-me
+say-me --npmmsii say-me jasmine
+say-me --npmmsii -g say-me jasmine
+```
 
 #### [Examples](https://github.com/AlekseyLeshko/say-me/tree/master/example)
 
