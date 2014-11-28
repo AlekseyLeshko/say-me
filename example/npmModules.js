@@ -19,6 +19,9 @@ res = sayMe.npmModulesIsInstalled(moduleArr);
 console.log(res);
 console.log(sayMe.programList);
 
+res = sayMe.getAllNpmModules();
+console.log(res);
+
 sayMe.isGlobal = true;
 moduleArr = [
   'npm',

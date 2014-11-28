@@ -38,6 +38,12 @@
         short: 'npmmsii',
         alias: 'npmmsii'
       },
+      'allNpmModule': {
+        boolean: true,
+        description: 'Returns all installed npm modules',
+        short: 'anm',
+        alias: 'anm'
+      },
       'program': {
         alias: 'p',
         string: true
@@ -78,6 +84,12 @@
 
     if (argv.npmmsii && argv._.length > 0) {
       var answer = sayMe.npmModulesIsInstalled(argv._);
+      console.log(answer);
+      process.exit(0);
+    }
+
+    if (argv.anm) {
+      var answer = sayMe.getAllNpmModules();
       console.log(answer);
       process.exit(0);
     }

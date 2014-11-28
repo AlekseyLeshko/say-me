@@ -110,6 +110,27 @@ true
 [ { name: 'npm', isInstall: true },
   { name: 'jasmine', isInstall: true } ]
 
+##### Returns all installed npm modules
+```javascript
+res = sayMe.getAllNpmModules();
+console.log(res);
+```
+
+>
+[ { version: '0.6.1',
+    from: 'optimist@>=0.6.1 <0.7.0',
+    resolved: 'https://registry.npmjs.org/optimist/-/optimist-0.6.1.tgz',
+    name: 'optimist' },
+  { version: '0.3.0',
+    from: 'shelljs@>=0.3.0 <0.4.0',
+    resolved: 'https://registry.npmjs.org/shelljs/-/shelljs-0.3.0.tgz',
+    name: 'shelljs' },
+  { version: '2.1.0',
+    from: 'jasmine@>=2.1.0 <3.0.0',
+    resolved: 'https://registry.npmjs.org/jasmine/-/jasmine-2.1.0.tgz',
+    name: 'jasmine' } ]
+
+
 #### Using in console
 Need install say-me module as global module
 ```
