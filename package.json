@@ -48,7 +48,7 @@
   "directories": {
     "lib": "./scr",
     "bin": "./bin",
-    "example": "example",
-    "test": "spec"
+    "example": "./example",
+    "test": "./spec"
   }
 }
