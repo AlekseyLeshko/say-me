@@ -20,6 +20,10 @@ npm i -g say-me
 var SayMe = require('say-me');
 var sayMe = new SayMe();
 ```
+or
+```
+var sayMe = require('say-me/create');
+```
 
 ##### Program is installed
 ```javascript
