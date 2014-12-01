@@ -2,11 +2,9 @@
   'use strict';
 
   var optimist = require('optimist');
-  var SayMe = require('./say-me');
+  var sayMe = require('../create');
 
   function main() {
-    var sayMe = new SayMe();
-
     var argv = optimist.usage('Usage: say-me <command>', {
       'help': {
         boolean: true,
