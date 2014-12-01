@@ -26,7 +26,7 @@ var SayMe = require('say-me');
 var sayMe = new SayMe();
 ```
 or
-```
+```javascript
 var sayMe = require('say-me/create');
 ```
 
