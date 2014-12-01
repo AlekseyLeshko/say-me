@@ -7,10 +7,15 @@ Npm module [say-me](https://github.com/AlekseyLeshko/say-me) used npm module [sa
 [![NPM](https://nodei.co/npm/say-me.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/say-me/)
 
 #### Install
+##### Install as local module
 ```
-// local
 npm i say-me
-// global
+npm i --save say-me
+npm i -D say-me
+```
+
+##### Install as global module
+```
 npm i -g say-me
 ```
 
