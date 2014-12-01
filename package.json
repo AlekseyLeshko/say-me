@@ -46,6 +46,7 @@
   "license": "MIT",
   "license": "MIT (https://github.com/AlekseyLeshko/say-me/blob/master/LICENSE)",
   "directories": {
+    "lib": "./scr",
     "bin": "./bin",
     "example": "example",
     "test": "spec"
