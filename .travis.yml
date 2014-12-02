@@ -6,3 +6,5 @@ branches:
   only:
     - master
     - develop
+before_script:
+  - make
