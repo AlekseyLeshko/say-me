@@ -19,7 +19,7 @@ install_global_module: install_say_me
 test:
 	npm test
 
-build: local_install
+build: global_install
 
 global_remove:
 	npm remove -g say-me
