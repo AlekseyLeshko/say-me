@@ -29,6 +29,3 @@ global_install: global_remove
 
 clean:
 	rm -rf node_modules/
-
-drop:
-	npm remove -g say-me
