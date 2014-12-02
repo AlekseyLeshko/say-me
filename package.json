@@ -38,6 +38,7 @@
     "jasmine": "^2.1.0"
   },
   "scripts": {
+    "pretest": "npm install jasmine",
     "test": "jasmine"
   },
   "preferGlobal": true,
