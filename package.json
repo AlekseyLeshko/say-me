@@ -36,7 +36,8 @@
   },
   "devDependencies": {
     "gulp": "^3.8.10",
-    "jasmine": "^2.1.1"
+    "jasmine": "^2.1.1",
+    "require-dir": "^0.1.0"
   },
   "scripts": {
     "test": "jasmine"
