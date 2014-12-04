@@ -25,6 +25,15 @@ install_global_module: install_say_me
 
 	@echo "istanbul is installed"
 
+	$(eval IS_INSTALLED = $(shell say-me --npmmii -g -p codeclimate-test-reporter))
+
+	@if [ "$(IS_INSTALLED)" = "false" ] ; then \
+		echo "installing codeclimate-test-reporter"; \
+		npm install -g codeclimate-test-reporter; \
+	fi
+
+	@echo "codeclimate-test-reporter is installed"
+
 test:
 	npm test
 
