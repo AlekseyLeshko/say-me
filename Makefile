@@ -16,10 +16,28 @@ install_global_module: install_say_me
 
 	@echo "jasmine is installed"
 
+	$(eval ISTANBUL_IS_INSTALLED = $(shell say-me --npmmii -g -p istanbul))
+
+	@if [ "$(ISTANBUL_IS_INSTALLED)" = "false" ] ; then \
+		echo "installing istanbul"; \
+		npm install -g istanbul; \
+	fi
+
+	@echo "istanbul is installed"
+
+	$(eval IS_INSTALLED = $(shell say-me --npmmii -g -p codeclimate-test-reporter))
+
+	@if [ "$(IS_INSTALLED)" = "false" ] ; then \
+		echo "installing codeclimate-test-reporter"; \
+		npm install -g codeclimate-test-reporter; \
+	fi
+
+	@echo "codeclimate-test-reporter is installed"
+
 test:
 	npm test
 
-build: global_install
+build: global_install test_coverage
 
 global_remove:
 	npm remove -g say-me
@@ -27,5 +45,9 @@ global_remove:
 global_install: global_remove
 	npm install -g ./
 
+test_coverage:
+	istanbul cover jasmine
+
 clean:
 	rm -rf node_modules/
+	rm -rf coverage/

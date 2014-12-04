@@ -8,6 +8,8 @@ Npm module [say-me](https://github.com/AlekseyLeshko/say-me) used npm module [sa
 [![Build Status:develop](https://travis-ci.org/AlekseyLeshko/say-me.svg?branch=develop)](https://travis-ci.org/AlekseyLeshko/say-me)
 [![Dependency Status](https://david-dm.org/AlekseyLeshko/say-me.svg?theme=shields.io)](https://david-dm.org/AlekseyLeshko/say-me)
 [![devDependency Status](https://david-dm.org/AlekseyLeshko/say-me/dev-status.svg?theme=shields.io)](https://david-dm.org/AlekseyLeshko/say-me#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/AlekseyLeshko/say-me/badges/gpa.svg)](https://codeclimate.com/github/AlekseyLeshko/say-me)
+[![Test Coverage](https://codeclimate.com/github/AlekseyLeshko/say-me/badges/coverage.svg)](https://codeclimate.com/github/AlekseyLeshko/say-me)
 [![npm version](https://badge.fury.io/js/say-me.svg)](http://badge.fury.io/js/say-me)
 [![GitHub version](https://badge.fury.io/gh/AlekseyLeshko%2Fsay-me.svg)](http://badge.fury.io/gh/AlekseyLeshko%2Fsay-me)
 
