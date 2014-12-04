@@ -93,7 +93,7 @@
     }
 
     optimist.showHelp();
-  };
+  }
 
   main();
 })();
