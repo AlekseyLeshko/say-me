@@ -28,7 +28,7 @@ install_global_module: install_say_me
 test:
 	npm test
 
-build: global_install
+build: global_install test_coverage
 
 global_remove:
 	npm remove -g say-me
@@ -36,5 +36,9 @@ global_remove:
 global_install: global_remove
 	npm install -g ./
 
+test_coverage:
+	istanbul cover jasmine
+
 clean:
 	rm -rf node_modules/
+	rm -rf coverage/
