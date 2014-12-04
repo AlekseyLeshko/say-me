@@ -8,3 +8,10 @@ branches:
     - develop
 before_script:
   - make
+
+addons:
+  code_climate:
+    repo_token: ae850c3cebd8a536301a8a648926cdd2b49123beb17b3170472f5e2e17b57efa
+
+after_script:
+  - codeclimate < coverage/lcov.info
