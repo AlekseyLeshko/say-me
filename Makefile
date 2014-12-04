@@ -16,6 +16,15 @@ install_global_module: install_say_me
 
 	@echo "jasmine is installed"
 
+	$(eval ISTANBUL_IS_INSTALLED = $(shell say-me --npmmii -g -p istanbul))
+
+	@if [ "$(ISTANBUL_IS_INSTALLED)" = "false" ] ; then \
+		echo "installing istanbul"; \
+		npm install -g istanbul; \
+	fi
+
+	@echo "istanbul is installed"
+
 test:
 	npm test
 
