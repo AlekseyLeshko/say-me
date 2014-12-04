@@ -1,11 +1,14 @@
-language: node_js
+language:
+  - node_js
+
 node_js:
   - "0.10.33"
-# whitelist
+
 branches:
   only:
     - master
     - develop
+
 before_script:
   - make
 
