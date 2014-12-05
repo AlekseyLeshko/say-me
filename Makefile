@@ -45,9 +45,9 @@ install_global_module: install_say_me
 
 test:
 	gulp jshint
-	npm test
+	istanbul cover jasmine
 
-build: global_install test_coverage
+build: global_install
 
 global_remove:
 	npm remove -g say-me
