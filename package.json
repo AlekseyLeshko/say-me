@@ -35,7 +35,11 @@
     "shelljs": "^0.3.0"
   },
   "devDependencies": {
-    "jasmine": "^2.1.1"
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "jasmine": "^2.1.1",
+    "jshint-stylish": "^1.0.0",
+    "require-dir": "^0.1.0"
   },
   "scripts": {
     "test": "jasmine"
@@ -43,7 +47,6 @@
   "preferGlobal": true,
   "private": false,
   "analyze": true,
-  "license": "MIT",
   "license": "MIT (https://github.com/AlekseyLeshko/say-me/blob/master/LICENSE)",
   "directories": {
     "lib": "./scr",

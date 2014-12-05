@@ -34,10 +34,20 @@ install_global_module: install_say_me
 
 	@echo "codeclimate-test-reporter is installed"
 
-test:
-	npm test
+	$(eval IS_INSTALLED = $(shell say-me --npmmii -g -p gulp))
 
-build: global_install test_coverage
+	@if [ "$(IS_INSTALLED)" = "false" ] ; then \
+		echo "installing gulp"; \
+		npm install -g gulp; \
+	fi
+
+	@echo "gulp is installed"
+
+test:
+	gulp jshint
+	istanbul cover jasmine
+
+build: global_install
 
 global_remove:
 	npm remove -g say-me

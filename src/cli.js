@@ -62,38 +62,39 @@
       sayMe.isGlobal = true;
     }
 
+    var answer;
     if (argv.pii && argv.p) {
-      var answer = sayMe.programIsInstalled(argv.p);
+      answer = sayMe.programIsInstalled(argv.p);
       console.log(answer);
       process.exit(0);
     }
 
     if (argv.psii && argv._.length > 0) {
-      var answer = sayMe.programsIsInstalled(argv._);
+      answer = sayMe.programsIsInstalled(argv._);
       console.log(answer);
       process.exit(0);
     }
 
     if (argv.npmmii && argv.p) {
-      var answer = sayMe.npmModuleIsInstalled(argv.p);
+      answer = sayMe.npmModuleIsInstalled(argv.p);
       console.log(answer);
       process.exit(0);
     }
 
     if (argv.npmmsii && argv._.length > 0) {
-      var answer = sayMe.npmModulesIsInstalled(argv._);
+      answer = sayMe.npmModulesIsInstalled(argv._);
       console.log(answer);
       process.exit(0);
     }
 
     if (argv.anm) {
-      var answer = sayMe.getAllNpmModules();
+      answer = sayMe.getAllNpmModules();
       console.log(answer);
       process.exit(0);
     }
 
     optimist.showHelp();
-  };
+  }
 
   main();
 })();
