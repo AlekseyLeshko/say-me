@@ -60,7 +60,7 @@
           name: name
         };
         this.programList.push(program);
-      };
+      }
     },
 
     checkPrograms: function() {
