@@ -1,3 +1,6 @@
+.DEFAULT_TARGET: all
+.PHONY: all
+
 all: install_dependencies test build
 
 install_dependencies: install_global_module
