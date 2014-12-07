@@ -64,3 +64,17 @@ test_coverage:
 clean:
 	rm -rf node_modules/
 	rm -rf coverage/
+
+define install_npm_module
+	@echo $1 $2 $3
+	$(eval IS_INSTALLED = $(shell say-me --npmmii $(2) -p $(1)))
+	@echo $(IS_INSTALLED)
+	if [ $(IS_INSTALLED) = "false" ] ; then \
+		echo "installing $(1)"; \
+	fi
+	@echo "$(1) is installed"
+endef
+
+test1:
+	@$(call install_npm_module,jasmine,-g)
+	@$(call install_npm_module,karma,-g)
