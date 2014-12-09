@@ -1,0 +1,10 @@
+#app
+coverage/
+example/
+gulp/
+spec/
+
+gulpfile.js
+create.js
+.travis.yml
+.jshintrc
