@@ -13,8 +13,7 @@ Npm module [say-me](https://github.com/AlekseyLeshko/say-me) used npm module [sa
 [![npm version](https://badge.fury.io/js/say-me.svg)](http://badge.fury.io/js/say-me)
 [![GitHub version](https://badge.fury.io/gh/AlekseyLeshko%2Fsay-me.svg)](http://badge.fury.io/gh/AlekseyLeshko%2Fsay-me)
 
-[![NPM](https://nodei.co/npm/say-me.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/say-me/)
-[![NPM](https://nodei.co/npm-dl/say-me.png?months=1&height=1)](https://nodei.co/npm-dl/say-me/)
+[![NPM](https://nodei.co/npm/say-me.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/say-me/)[![NPM](https://nodei.co/npm-dl/say-me.png?months=1&height=3)](https://nodei.co/npm-dl/say-me/)
 
 #### Install
 ##### Install as local module
