@@ -1,5 +1,5 @@
-#npm
-node_modules/
+# npm
+node_modules/**/*
 
-#app
-coverage/
+# app
+/coverage/**/*
